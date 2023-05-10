@@ -38,12 +38,73 @@ export const styles = StyleSheet.create({
    }, 
    textButton:{
     color: '#FFF'
-   }, 
+   },
    tasks:{
-    height: '100%',
-    width: '100%',
-    backgroundColor:'#454545',
+      backgroundColor:'#454545',
+      height: '100%', 
+      width: '100%'
+   },
+   summaryTask:{
     flexDirection:'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginBottom: 30, 
+   },
+   createdTasks:{
+      flexDirection:'row',
+      padding: 5,
+      marginRight: 5
+   },
+   createdText:{
+      marginRight: 10,
+      marginLeft: 15,
+      color: '#4EA8DE',
+      fontSize: 14,
+      fontWeight: 'bold'
+   },
+   doneTasks:{
+      flexDirection:'row',
+      padding: 5,
+      marginRight: 3
+   }, 
+   doneText:{
+      marginRight: 10,
+      marginLeft: 20,
+      color: '#8284FA',
+      fontSize: 14,
+      fontWeight: 'bold'
+   }, 
+   qty:{
+      backgroundColor: '#333333',
+      justifyContent: 'center',
+      color: '#FFF',
+      padding: 1,
+      fontWeight: 'bold', 
+      width: 10,
+      height: 15,
+      lineHeight: 15
+   }, 
+   listEmpty:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      flex: 1, 
+      marginBottom: 5,
+      color:'#808080'
+   },
+   imageEmpty:{
+      marginBottom: 10
+   },
+   textEmptyBold:{
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginBottom: 5,
+      color:'#808080'
+   },
+   textEmpty:{
+      color:'#808080'
+   },
+   list:{
+      justifyContent: 'center',
+      alignItems: 'center'
    }
 });
