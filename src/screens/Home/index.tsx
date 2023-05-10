@@ -18,14 +18,17 @@ export function Home(){
     }
 
     function handleTaskAdd(){
-        listTask.forEach((task)=>{
-            if(task.task === taskName){
-                return Alert.alert("Task ja existe", `Ja foi criada a task ${taskName} na lista`);
-            }
-        })
-        const newTask = {task: taskName, isDone: true};
-       // setListTask([...listTask, taskName]);
-       //setListTask([...listTask], {newTask} );
+        const isAlready = listTask.filter(task => task.task === taskName);
+        
+        if(isAlready.length > 0){
+            return Alert.alert("Task ja existe", `Ja foi criada a task ${taskName} na lista`);
+        }
+        const newTask = 
+        {
+            task: taskName, 
+            isDone: true
+        };
+       setListTask([...listTask, newTask]);
         setTaskName('');
     }
     return (
