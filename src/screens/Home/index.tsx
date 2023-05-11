@@ -12,12 +12,37 @@ export function Home(){
     const [taskName, setTaskName] = useState('');
 
     const createdTasksQty = listTask.length;
+    const isDoneTasks = listTask.filter(t => t.isDone ===true).length;
+
+    function toggleIsDone(task: Task){
+       const index = listTask.findIndex(t => t.task === task.task);
+       if(task.isDone){
+        task.isDone = false;
+       } else {
+        task.isDone= true;
+       }
+       setListTask(prevState => [...prevState, prevState[index] = task]);
+    }
+
 
     function handleRemoveTask(desc: string){
-        console.log(desc);
+        Alert.alert("Remover", `Remover a task ${desc}?`, [
+            {
+              text: "Sim",
+              onPress: ()=> setListTask(prevState => prevState.filter(p => p.task !==desc))
+            }, 
+            {
+              text:"Nao",
+              style: "cancel"
+            }
+          ]);
     }
 
     function handleTaskAdd(){
+        if(taskName.length< 0){
+            return Alert.alert("Task nula", "Nao eh possivel criar uma task nula");
+        }
+
         const isAlready = listTask.filter(task => task.task === taskName);
         
         if(isAlready.length > 0){
@@ -26,7 +51,7 @@ export function Home(){
         const newTask = 
         {
             task: taskName, 
-            isDone: true
+            isDone: false
         };
        setListTask([...listTask, newTask]);
         setTaskName('');
@@ -62,7 +87,7 @@ export function Home(){
                     </View>
                     <View style={styles.doneTasks}>
                         <Text style={styles.doneText}>Concluídas</Text> 
-                        <Text style={styles.qty}>{0}</Text>
+                        <Text style={styles.qty}>{isDoneTasks}</Text>
                     </View>
                 </View>
                 <View style={styles.list}>
@@ -74,6 +99,7 @@ export function Home(){
                             key={item.task} 
                             task={item} 
                             onRemove={() => handleRemoveTask(item.task)}
+                            onChange={()=> toggleIsDone(item)}
                         />
                         )}
                         showsVerticalScrollIndicator={false}
