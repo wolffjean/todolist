@@ -16,7 +16,7 @@ export function Home(){
 
     function toggleIsDone(task: Task){
        const index = listTask.findIndex(t => t.task === task.task);
-       const tasks = listTask;
+       const tasks = [...listTask];
        if (task.isDone){
         tasks[index] = {task: task.task, isDone: false};
        } else {
