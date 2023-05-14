@@ -16,12 +16,13 @@ export function Home(){
 
     function toggleIsDone(task: Task){
        const index = listTask.findIndex(t => t.task === task.task);
-       if(task.isDone){
-        task.isDone = false;
+       const tasks = listTask;
+       if (task.isDone){
+        tasks[index] = {task: task.task, isDone: false};
        } else {
-        task.isDone= true;
+        tasks[index] = {task: task.task, isDone: true};
        }
-       setListTask(prevState => [...prevState, prevState[index] = task]);
+       setListTask(tasks);
     }
 
 
